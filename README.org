@@ -1,0 +1,796 @@
+#+TITLE: Restclient examples
+#+AUTHOR: Leo Euler <euler@gmx.us>
+#+DATE: 2019-04-23
+#+OPTIONS: toc:2
+
+* Returns Origin IP
+
+#+BEGIN_SRC restclient
+GET http://httpbin.org/ip
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC js
+{
+  "origin": "197.231.221.211, 197.231.221.211"
+}
+// GET http://httpbin.org/ip
+// HTTP/1.1 200 OK
+// Access-Control-Allow-Credentials: true
+// Access-Control-Allow-Origin: *
+// Content-Type: application/json
+// Date: Wed, 24 Apr 2019 18:43:18 GMT
+// Referrer-Policy: no-referrer-when-downgrade
+// Server: nginx
+// X-Content-Type-Options: nosniff
+// X-Frame-Options: DENY
+// X-XSS-Protection: 1; mode=block
+// Content-Length: 51
+// Connection: keep-alive
+// Request duration: 0.273675s
+#+END_SRC
+
+* Returns user-agent
+
+#+BEGIN_SRC restclient
+GET http://httpbin.org/user-agent
+User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC js
+{
+  "user-agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0"
+}
+// GET http://httpbin.org/user-agent
+// HTTP/1.1 200 OK
+// Access-Control-Allow-Credentials: true
+// Access-Control-Allow-Origin: *
+// Content-Type: application/json
+// Date: Wed, 24 Apr 2019 18:43:22 GMT
+// Referrer-Policy: no-referrer-when-downgrade
+// Server: nginx
+// X-Content-Type-Options: nosniff
+// X-Frame-Options: DENY
+// X-XSS-Protection: 1; mode=block
+// Content-Length: 99
+// Connection: keep-alive
+// Request duration: 0.270685s
+#+END_SRC
+
+* Returns header dict
+
+#+BEGIN_SRC restclient
+GET http://httpbin.org/headers
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC js
+{
+  "headers": {
+    "Accept": "*/*",
+    "Accept-Charset": "utf-8;q=1, koi8-r;q=0.5, gb2312;q=0.5, big5;q=0.5, iso-2022-jp;q=0.5, shift_jis;q=0.5, euc-tw;q=0.5, euc-jp;q=0.5, euc-jis-2004;q=0.5, euc-kr;q=0.5, iso-8859-1;q=0.5, us-ascii;q=0.5, utf-7;q=0.5, hz-gb-2312;q=0.5, big5-hkscs;q=0.5, gbk;q=0.5, gb18030;q=0.5, iso-8859-5;q=0.5, koi8-u;q=0.5, cp866;q=0.5, koi8-t;q=0.5, windows-1251;q=0.5, cp855;q=0.5, iso-8859-2;q=0.5, iso-8859-3;q=0.5, iso-8859-4;q=0.5, iso-8859-9;q=0.5, iso-8859-10;q=0.5, iso-8859-13;q=0.5, iso-8859-14;q=0.5, iso-8859-15;q=0.5, windows-1250;q=0.5, windows-1252;q=0.5, windows-1254;q=0.5, windows-1257;q=0.5, cp775;q=0.5, cp850;q=0.5, cp852;q=0.5, cp857;q=0.5, cp858;q=0.5, cp860;q=0.5, cp861;q=0.5, cp863;q=0.5, cp865;q=0.5, cp437;q=0.5, macintosh;q=0.5, next;q=0.5, hp-roman8;q=0.5, adobe-standard-encoding;q=0.5, iso-8859-16;q=0.5, iso-8859-7;q=0.5, windows-1253;q=0.5, cp737;q=0.5, cp851;q=0.5, cp869;q=0.5, iso-8859-8;q=0.5, windows-1255;q=0.5, cp862;q=0.5, iso-2022-jp-2004;q=0.5, cp874;q=0.5, iso-8859-11;q=0.5, viscii;q=0.5, windows-1258;q=0.5, iso-8859-6;q=0.5, windows-1256;q=0.5, iso-2022-cn;q=0.5, iso-2022-cn-ext;q=0.5, iso-2022-jp-2;q=0.5, iso-2022-kr;q=0.5, utf-16le;q=0.5, utf-16be;q=0.5, utf-16;q=0.5, x-ctext;q=0.5",
+    "Extension": "Security/Digest Security/SSL",
+    "Host": "httpbin.org",
+    "Mime-Version": "1.0"
+  }
+}
+// GET http://httpbin.org/headers
+// HTTP/1.1 200 OK
+// Access-Control-Allow-Credentials: true
+// Access-Control-Allow-Origin: *
+// Content-Type: application/json
+// Date: Wed, 24 Apr 2019 18:43:26 GMT
+// Referrer-Policy: no-referrer-when-downgrade
+// Server: nginx
+// X-Content-Type-Options: nosniff
+// X-Frame-Options: DENY
+// X-XSS-Protection: 1; mode=block
+// Content-Length: 1377
+// Connection: keep-alive
+// Request duration: 0.258572s
+#+END_SRC
+
+* Returns GET data
+
+#+BEGIN_SRC restclient
+GET http://httpbin.org/get?some=example&params=for&testing=restclient
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC js
+{
+  "args": {
+    "params": "for",
+    "some": "example",
+    "testing": "restclient"
+  },
+  "headers": {
+    "Accept": "*/*",
+    "Accept-Charset": "utf-8;q=1, koi8-r;q=0.5, gb2312;q=0.5, big5;q=0.5, iso-2022-jp;q=0.5, shift_jis;q=0.5, euc-tw;q=0.5, euc-jp;q=0.5, euc-jis-2004;q=0.5, euc-kr;q=0.5, iso-8859-1;q=0.5, us-ascii;q=0.5, utf-7;q=0.5, hz-gb-2312;q=0.5, big5-hkscs;q=0.5, gbk;q=0.5, gb18030;q=0.5, iso-8859-5;q=0.5, koi8-u;q=0.5, cp866;q=0.5, koi8-t;q=0.5, windows-1251;q=0.5, cp855;q=0.5, iso-8859-2;q=0.5, iso-8859-3;q=0.5, iso-8859-4;q=0.5, iso-8859-9;q=0.5, iso-8859-10;q=0.5, iso-8859-13;q=0.5, iso-8859-14;q=0.5, iso-8859-15;q=0.5, windows-1250;q=0.5, windows-1252;q=0.5, windows-1254;q=0.5, windows-1257;q=0.5, cp775;q=0.5, cp850;q=0.5, cp852;q=0.5, cp857;q=0.5, cp858;q=0.5, cp860;q=0.5, cp861;q=0.5, cp863;q=0.5, cp865;q=0.5, cp437;q=0.5, macintosh;q=0.5, next;q=0.5, hp-roman8;q=0.5, adobe-standard-encoding;q=0.5, iso-8859-16;q=0.5, iso-8859-7;q=0.5, windows-1253;q=0.5, cp737;q=0.5, cp851;q=0.5, cp869;q=0.5, iso-8859-8;q=0.5, windows-1255;q=0.5, cp862;q=0.5, iso-2022-jp-2004;q=0.5, cp874;q=0.5, iso-8859-11;q=0.5, viscii;q=0.5, windows-1258;q=0.5, iso-8859-6;q=0.5, windows-1256;q=0.5, iso-2022-cn;q=0.5, iso-2022-cn-ext;q=0.5, iso-2022-jp-2;q=0.5, iso-2022-kr;q=0.5, utf-16le;q=0.5, utf-16be;q=0.5, utf-16;q=0.5, x-ctext;q=0.5",
+    "Extension": "Security/Digest Security/SSL",
+    "Host": "httpbin.org",
+    "Mime-Version": "1.0"
+  },
+  "origin": "197.231.221.211, 197.231.221.211",
+  "url": "https://httpbin.org/get?some=example&params=for&testing=restclient"
+}
+// GET http://httpbin.org/get?some=example&params=for&testing=restclient
+// HTTP/1.1 200 OK
+// Access-Control-Allow-Credentials: true
+// Access-Control-Allow-Origin: *
+// Content-Type: application/json
+// Date: Wed, 24 Apr 2019 18:43:30 GMT
+// Referrer-Policy: no-referrer-when-downgrade
+// Server: nginx
+// X-Content-Type-Options: nosniff
+// X-Frame-Options: DENY
+// X-XSS-Protection: 1; mode=block
+// Content-Length: 1598
+// Connection: keep-alive
+// Request duration: 0.291030s
+#+END_SRC
+
+* Returns POST data
+
+#+BEGIN_SRC restclient
+POST http://httpbin.org/post
+Content-Type: application/json
+
+{
+    "jql": "project = HSP",
+    "startAt": 0,
+    "maxResults": 15,
+    "fields": [
+        "summary",
+        "status",
+        "assignee"
+    ]
+}
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC js
+{
+  "args": {
+  },
+  "data": "{\n    \"jql\": \"project = HSP\",\n    \"startAt\": 0,\n    \"maxResults\": 15,\n    \"fields\": [\n        \"summary\",\n        \"status\",\n        \"assignee\"\n    ]\n}",
+  "files": {
+  },
+  "form": {
+  },
+  "headers": {
+    "Accept": "*/*",
+    "Accept-Charset": "utf-8;q=1, koi8-r;q=0.5, gb2312;q=0.5, big5;q=0.5, iso-2022-jp;q=0.5, shift_jis;q=0.5, euc-tw;q=0.5, euc-jp;q=0.5, euc-jis-2004;q=0.5, euc-kr;q=0.5, iso-8859-1;q=0.5, us-ascii;q=0.5, utf-7;q=0.5, hz-gb-2312;q=0.5, big5-hkscs;q=0.5, gbk;q=0.5, gb18030;q=0.5, iso-8859-5;q=0.5, koi8-u;q=0.5, cp866;q=0.5, koi8-t;q=0.5, windows-1251;q=0.5, cp855;q=0.5, iso-8859-2;q=0.5, iso-8859-3;q=0.5, iso-8859-4;q=0.5, iso-8859-9;q=0.5, iso-8859-10;q=0.5, iso-8859-13;q=0.5, iso-8859-14;q=0.5, iso-8859-15;q=0.5, windows-1250;q=0.5, windows-1252;q=0.5, windows-1254;q=0.5, windows-1257;q=0.5, cp775;q=0.5, cp850;q=0.5, cp852;q=0.5, cp857;q=0.5, cp858;q=0.5, cp860;q=0.5, cp861;q=0.5, cp863;q=0.5, cp865;q=0.5, cp437;q=0.5, macintosh;q=0.5, next;q=0.5, hp-roman8;q=0.5, adobe-standard-encoding;q=0.5, iso-8859-16;q=0.5, iso-8859-7;q=0.5, windows-1253;q=0.5, cp737;q=0.5, cp851;q=0.5, cp869;q=0.5, iso-8859-8;q=0.5, windows-1255;q=0.5, cp862;q=0.5, iso-2022-jp-2004;q=0.5, cp874;q=0.5, iso-8859-11;q=0.5, viscii;q=0.5, windows-1258;q=0.5, iso-8859-6;q=0.5, windows-1256;q=0.5, iso-2022-cn;q=0.5, iso-2022-cn-ext;q=0.5, iso-2022-jp-2;q=0.5, iso-2022-kr;q=0.5, utf-16le;q=0.5, utf-16be;q=0.5, utf-16;q=0.5, x-ctext;q=0.5",
+    "Content-Length": "149",
+    "Content-Type": "application/json",
+    "Extension": "Security/Digest Security/SSL",
+    "Host": "httpbin.org",
+    "Mime-Version": "1.0"
+  },
+  "json": {
+    "fields": [
+      "summary",
+      "status",
+      "assignee"
+    ],
+    "jql": "project = HSP",
+    "maxResults": 15,
+    "startAt": 0
+  },
+  "origin": "197.231.221.211, 197.231.221.211",
+  "url": "https://httpbin.org/post"
+}
+// POST http://httpbin.org/post
+// HTTP/1.1 200 OK
+// Access-Control-Allow-Credentials: true
+// Access-Control-Allow-Origin: *
+// Content-Type: application/json
+// Date: Wed, 24 Apr 2019 18:43:34 GMT
+// Referrer-Policy: no-referrer-when-downgrade
+// Server: nginx
+// X-Content-Type-Options: nosniff
+// X-Frame-Options: DENY
+// X-XSS-Protection: 1; mode=block
+// Content-Length: 1933
+// Connection: keep-alive
+// Request duration: 0.326039s
+#+END_SRC
+
+* Content type is loosely matched, could be application/vnd.whatever+json
+
+#+BEGIN_SRC restclient
+GET http://httpbin.org/response-headers?Content-Type=application/vnd.whatever%2Bjson;%20charset=UTF-8
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC js
+{
+  "Content-Length": "132",
+  "Content-Type": [
+    "application/json",
+    "application/vnd.whatever+json; charset=UTF-8"
+  ]
+}
+// GET http://httpbin.org/response-headers?Content-Type=application/vnd.whatever%2Bjson;%20charset=UTF-8
+// HTTP/1.1 200 OK
+// Access-Control-Allow-Credentials: true
+// Access-Control-Allow-Origin: *
+// Content-Type: application/vnd.whatever+json; charset=UTF-8
+// Date: Wed, 24 Apr 2019 18:43:38 GMT
+// Referrer-Policy: no-referrer-when-downgrade
+// Server: nginx
+// X-Content-Type-Options: nosniff
+// X-Frame-Options: DENY
+// X-XSS-Protection: 1; mode=block
+// Content-Length: 132
+// Connection: keep-alive
+// Request duration: 0.326375s
+#+END_SRC
+
+* Content type is loosely matched, could be application/vnd.whatever+json
+
+#+BEGIN_SRC restclient
+GET http://httpbin.org/response-headers?Content-Type=application/something%2Bjson
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC js
+{
+  "Content-Length": "114",
+  "Content-Type": [
+    "application/json",
+    "application/something+json"
+  ]
+}
+// GET http://httpbin.org/response-headers?Content-Type=application/something%2Bjson
+// HTTP/1.1 200 OK
+// Access-Control-Allow-Credentials: true
+// Access-Control-Allow-Origin: *
+// Content-Type: application/something+json
+// Date: Wed, 24 Apr 2019 18:43:41 GMT
+// Referrer-Policy: no-referrer-when-downgrade
+// Server: nginx
+// X-Content-Type-Options: nosniff
+// X-Frame-Options: DENY
+// X-XSS-Protection: 1; mode=block
+// Content-Length: 114
+// Connection: keep-alive
+// Request duration: 0.290611s
+#+END_SRC
+
+* Returns PUT data
+
+#+BEGIN_SRC restclient
+PUT http://httpbin.org/put
+Content-Type: application/json
+
+{
+    "name": "emacs",
+    "awesomness": 9042
+}
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC js
+{
+  "args": {
+  },
+  "data": "{\n    \"name\": \"emacs\",\n    \"awesomness\": 9042\n}",
+  "files": {
+  },
+  "form": {
+  },
+  "headers": {
+    "Accept": "*/*",
+    "Accept-Charset": "utf-8;q=1, koi8-r;q=0.5, gb2312;q=0.5, big5;q=0.5, iso-2022-jp;q=0.5, shift_jis;q=0.5, euc-tw;q=0.5, euc-jp;q=0.5, euc-jis-2004;q=0.5, euc-kr;q=0.5, iso-8859-1;q=0.5, us-ascii;q=0.5, utf-7;q=0.5, hz-gb-2312;q=0.5, big5-hkscs;q=0.5, gbk;q=0.5, gb18030;q=0.5, iso-8859-5;q=0.5, koi8-u;q=0.5, cp866;q=0.5, koi8-t;q=0.5, windows-1251;q=0.5, cp855;q=0.5, iso-8859-2;q=0.5, iso-8859-3;q=0.5, iso-8859-4;q=0.5, iso-8859-9;q=0.5, iso-8859-10;q=0.5, iso-8859-13;q=0.5, iso-8859-14;q=0.5, iso-8859-15;q=0.5, windows-1250;q=0.5, windows-1252;q=0.5, windows-1254;q=0.5, windows-1257;q=0.5, cp775;q=0.5, cp850;q=0.5, cp852;q=0.5, cp857;q=0.5, cp858;q=0.5, cp860;q=0.5, cp861;q=0.5, cp863;q=0.5, cp865;q=0.5, cp437;q=0.5, macintosh;q=0.5, next;q=0.5, hp-roman8;q=0.5, adobe-standard-encoding;q=0.5, iso-8859-16;q=0.5, iso-8859-7;q=0.5, windows-1253;q=0.5, cp737;q=0.5, cp851;q=0.5, cp869;q=0.5, iso-8859-8;q=0.5, windows-1255;q=0.5, cp862;q=0.5, iso-2022-jp-2004;q=0.5, cp874;q=0.5, iso-8859-11;q=0.5, viscii;q=0.5, windows-1258;q=0.5, iso-8859-6;q=0.5, windows-1256;q=0.5, iso-2022-cn;q=0.5, iso-2022-cn-ext;q=0.5, iso-2022-jp-2;q=0.5, iso-2022-kr;q=0.5, utf-16le;q=0.5, utf-16be;q=0.5, utf-16;q=0.5, x-ctext;q=0.5",
+    "Content-Length": "47",
+    "Content-Type": "application/json",
+    "Extension": "Security/Digest Security/SSL",
+    "Host": "httpbin.org",
+    "Mime-Version": "1.0"
+  },
+  "json": {
+    "awesomness": 9042,
+    "name": "emacs"
+  },
+  "origin": "197.231.221.211, 197.231.221.211",
+  "url": "https://httpbin.org/put"
+}
+// PUT http://httpbin.org/put
+// HTTP/1.1 200 OK
+// Access-Control-Allow-Credentials: true
+// Access-Control-Allow-Origin: *
+// Content-Type: application/json
+// Date: Wed, 24 Apr 2019 18:43:46 GMT
+// Referrer-Policy: no-referrer-when-downgrade
+// Server: nginx
+// X-Content-Type-Options: nosniff
+// X-Frame-Options: DENY
+// X-XSS-Protection: 1; mode=block
+// Content-Length: 1713
+// Connection: keep-alive
+// Request duration: 0.337509s
+#+END_SRC
+
+* Returns PATCH data
+
+#+BEGIN_SRC restclient
+PATCH http://httpbin.org/patch
+Content-Type: application/xml
+
+[
+    {
+        "replace": "/awesomness",
+        "value": 9043
+    }
+]
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC js
+{
+  "args": {
+  },
+  "data": "[\n    {\n        \"replace\": \"/awesomness\",\n        \"value\": 9043\n    }\n]",
+  "files": {
+  },
+  "form": {
+  },
+  "headers": {
+    "Accept": "*/*",
+    "Accept-Charset": "utf-8;q=1, koi8-r;q=0.5, gb2312;q=0.5, big5;q=0.5, iso-2022-jp;q=0.5, shift_jis;q=0.5, euc-tw;q=0.5, euc-jp;q=0.5, euc-jis-2004;q=0.5, euc-kr;q=0.5, iso-8859-1;q=0.5, us-ascii;q=0.5, utf-7;q=0.5, hz-gb-2312;q=0.5, big5-hkscs;q=0.5, gbk;q=0.5, gb18030;q=0.5, iso-8859-5;q=0.5, koi8-u;q=0.5, cp866;q=0.5, koi8-t;q=0.5, windows-1251;q=0.5, cp855;q=0.5, iso-8859-2;q=0.5, iso-8859-3;q=0.5, iso-8859-4;q=0.5, iso-8859-9;q=0.5, iso-8859-10;q=0.5, iso-8859-13;q=0.5, iso-8859-14;q=0.5, iso-8859-15;q=0.5, windows-1250;q=0.5, windows-1252;q=0.5, windows-1254;q=0.5, windows-1257;q=0.5, cp775;q=0.5, cp850;q=0.5, cp852;q=0.5, cp857;q=0.5, cp858;q=0.5, cp860;q=0.5, cp861;q=0.5, cp863;q=0.5, cp865;q=0.5, cp437;q=0.5, macintosh;q=0.5, next;q=0.5, hp-roman8;q=0.5, adobe-standard-encoding;q=0.5, iso-8859-16;q=0.5, iso-8859-7;q=0.5, windows-1253;q=0.5, cp737;q=0.5, cp851;q=0.5, cp869;q=0.5, iso-8859-8;q=0.5, windows-1255;q=0.5, cp862;q=0.5, iso-2022-jp-2004;q=0.5, cp874;q=0.5, iso-8859-11;q=0.5, viscii;q=0.5, windows-1258;q=0.5, iso-8859-6;q=0.5, windows-1256;q=0.5, iso-2022-cn;q=0.5, iso-2022-cn-ext;q=0.5, iso-2022-jp-2;q=0.5, iso-2022-kr;q=0.5, utf-16le;q=0.5, utf-16be;q=0.5, utf-16;q=0.5, x-ctext;q=0.5",
+    "Content-Length": "71",
+    "Content-Type": "application/xml",
+    "Extension": "Security/Digest Security/SSL",
+    "Host": "httpbin.org",
+    "Mime-Version": "1.0"
+  },
+  "json": [
+    {
+      "replace": "/awesomness",
+      "value": 9043
+    }
+  ],
+  "origin": "197.231.221.211, 197.231.221.211",
+  "url": "https://httpbin.org/patch"
+}
+// PATCH http://httpbin.org/patch
+// HTTP/1.1 200 OK
+// Access-Control-Allow-Credentials: true
+// Access-Control-Allow-Origin: *
+// Content-Type: application/json
+// Date: Wed, 24 Apr 2019 18:43:49 GMT
+// Referrer-Policy: no-referrer-when-downgrade
+// Server: nginx
+// X-Content-Type-Options: nosniff
+// X-Frame-Options: DENY
+// X-XSS-Protection: 1; mode=block
+// Content-Length: 1760
+// Connection: keep-alive
+// Request duration: 0.291904s
+#+END_SRC
+
+* Returns DELETE data
+
+#+BEGIN_SRC restclient
+DELETE http://httpbin.org/delete
+If-Match: "*"
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC js
+{
+  "args": {
+  },
+  "data": "",
+  "files": {
+  },
+  "form": {
+  },
+  "headers": {
+    "Accept": "*/*",
+    "Accept-Charset": "utf-8;q=1, koi8-r;q=0.5, gb2312;q=0.5, big5;q=0.5, iso-2022-jp;q=0.5, shift_jis;q=0.5, euc-tw;q=0.5, euc-jp;q=0.5, euc-jis-2004;q=0.5, euc-kr;q=0.5, iso-8859-1;q=0.5, us-ascii;q=0.5, utf-7;q=0.5, hz-gb-2312;q=0.5, big5-hkscs;q=0.5, gbk;q=0.5, gb18030;q=0.5, iso-8859-5;q=0.5, koi8-u;q=0.5, cp866;q=0.5, koi8-t;q=0.5, windows-1251;q=0.5, cp855;q=0.5, iso-8859-2;q=0.5, iso-8859-3;q=0.5, iso-8859-4;q=0.5, iso-8859-9;q=0.5, iso-8859-10;q=0.5, iso-8859-13;q=0.5, iso-8859-14;q=0.5, iso-8859-15;q=0.5, windows-1250;q=0.5, windows-1252;q=0.5, windows-1254;q=0.5, windows-1257;q=0.5, cp775;q=0.5, cp850;q=0.5, cp852;q=0.5, cp857;q=0.5, cp858;q=0.5, cp860;q=0.5, cp861;q=0.5, cp863;q=0.5, cp865;q=0.5, cp437;q=0.5, macintosh;q=0.5, next;q=0.5, hp-roman8;q=0.5, adobe-standard-encoding;q=0.5, iso-8859-16;q=0.5, iso-8859-7;q=0.5, windows-1253;q=0.5, cp737;q=0.5, cp851;q=0.5, cp869;q=0.5, iso-8859-8;q=0.5, windows-1255;q=0.5, cp862;q=0.5, iso-2022-jp-2004;q=0.5, cp874;q=0.5, iso-8859-11;q=0.5, viscii;q=0.5, windows-1258;q=0.5, iso-8859-6;q=0.5, windows-1256;q=0.5, iso-2022-cn;q=0.5, iso-2022-cn-ext;q=0.5, iso-2022-jp-2;q=0.5, iso-2022-kr;q=0.5, utf-16le;q=0.5, utf-16be;q=0.5, utf-16;q=0.5, x-ctext;q=0.5",
+    "Extension": "Security/Digest Security/SSL",
+    "Host": "httpbin.org",
+    "If-Match": "\"*\"",
+    "Mime-Version": "1.0"
+  },
+  "json": null,
+  "origin": "197.231.221.211, 197.231.221.211",
+  "url": "https://httpbin.org/delete"
+}
+// DELETE http://httpbin.org/delete
+// HTTP/1.1 200 OK
+// Access-Control-Allow-Credentials: true
+// Access-Control-Allow-Origin: *
+// Content-Type: application/json
+// Date: Wed, 24 Apr 2019 18:43:54 GMT
+// Referrer-Policy: no-referrer-when-downgrade
+// Server: nginx
+// X-Content-Type-Options: nosniff
+// X-Frame-Options: DENY
+// X-XSS-Protection: 1; mode=block
+// Content-Length: 1570
+// Connection: keep-alive
+// Request duration: 0.257459s
+#+END_SRC
+
+* HTTP Status codes
+** 404
+
+#+BEGIN_SRC restclient
+GET http://httpbin.org/status/404
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC html
+<!-- GET http://httpbin.org/status/404 -->
+<!-- HTTP/1.1 404 NOT FOUND -->
+<!-- Access-Control-Allow-Credentials: true -->
+<!-- Access-Control-Allow-Origin: * -->
+<!-- Content-Type: text/html; charset=utf-8 -->
+<!-- Date: Wed, 24 Apr 2019 18:43:59 GMT -->
+<!-- Referrer-Policy: no-referrer-when-downgrade -->
+<!-- Server: nginx -->
+<!-- X-Content-Type-Options: nosniff -->
+<!-- X-Frame-Options: DENY -->
+<!-- X-XSS-Protection: 1; mode=block -->
+<!-- Content-Length: 0 -->
+<!-- Connection: keep-alive -->
+<!-- Request duration: 0.292062s -->
+#+END_SRC
+
+** 200
+
+#+BEGIN_SRC restclient
+GET http://httpbin.org/status/200
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC html
+<!-- GET http://httpbin.org/status/200 -->
+<!-- HTTP/1.1 200 OK -->
+<!-- Access-Control-Allow-Credentials: true -->
+<!-- Access-Control-Allow-Origin: * -->
+<!-- Content-Type: text/html; charset=utf-8 -->
+<!-- Date: Wed, 24 Apr 2019 18:44:03 GMT -->
+<!-- Referrer-Policy: no-referrer-when-downgrade -->
+<!-- Server: nginx -->
+<!-- X-Content-Type-Options: nosniff -->
+<!-- X-Frame-Options: DENY -->
+<!-- X-XSS-Protection: 1; mode=block -->
+<!-- Content-Length: 0 -->
+<!-- Connection: keep-alive -->
+<!-- Request duration: 0.280727s -->
+#+END_SRC
+
+* Returns given response headers
+
+#+BEGIN_SRC restclient
+GET http://httpbin.org/response-headers?key=val
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC js
+{
+  "Content-Length": "85",
+  "Content-Type": "application/json",
+  "key": "val"
+}
+// GET http://httpbin.org/response-headers?key=val
+// HTTP/1.1 200 OK
+// Access-Control-Allow-Credentials: true
+// Access-Control-Allow-Origin: *
+// Content-Type: application/json
+// Date: Wed, 24 Apr 2019 18:44:07 GMT
+// key: val
+// Referrer-Policy: no-referrer-when-downgrade
+// Server: nginx
+// X-Content-Type-Options: nosniff
+// X-Frame-Options: DENY
+// X-XSS-Protection: 1; mode=block
+// Content-Length: 85
+// Connection: keep-alive
+// Request duration: 0.424449s
+#+END_SRC
+
+* cookie data
+
+#+BEGIN_SRC restclient
+GET http://httpbin.org/cookies
+Cookie: name=restclient
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC js
+{
+  "cookies": {
+    "name": "restclient"
+  }
+}
+// GET http://httpbin.org/cookies
+// HTTP/1.1 200 OK
+// Access-Control-Allow-Credentials: true
+// Access-Control-Allow-Origin: *
+// Content-Type: application/json
+// Date: Wed, 24 Apr 2019 18:44:12 GMT
+// Referrer-Policy: no-referrer-when-downgrade
+// Server: nginx
+// X-Content-Type-Options: nosniff
+// X-Frame-Options: DENY
+// X-XSS-Protection: 1; mode=block
+// Content-Length: 48
+// Connection: keep-alive
+// Request duration: 0.364756s
+#+END_SRC
+
+* HTTPBasic Auth
+
+#+BEGIN_SRC restclient
+:example-auth := (format "Basic %s" (base64-encode-string (format "%s:%s" "user" "password")))
+GET http://httpbin.org/basic-auth/user/password
+Authorization: :example-auth
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC js
+{
+  "authenticated": true,
+  "user": "user"
+}
+// GET http://httpbin.org/basic-auth/user/password
+// HTTP/1.1 200 OK
+// Access-Control-Allow-Credentials: true
+// Access-Control-Allow-Origin: *
+// Content-Type: application/json
+// Date: Wed, 24 Apr 2019 18:44:17 GMT
+// Referrer-Policy: no-referrer-when-downgrade
+// Server: nginx
+// X-Content-Type-Options: nosniff
+// X-Frame-Options: DENY
+// X-XSS-Protection: 1; mode=block
+// Content-Length: 47
+// Connection: keep-alive
+// Request duration: 0.306374s
+#+END_SRC
+
+* Returns some XML
+
+#+BEGIN_SRC restclient
+GET http://httpbin.org/xml
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC nxml
+<?xml version='1.0' encoding='us-ascii'?>
+
+<!--  A SAMPLE set of slides  -->
+
+<slideshow 
+    title="Sample Slide Show"
+    date="Date of publication"
+    author="Yours Truly"
+    >
+
+  <!-- TITLE SLIDE -->
+  <slide type="all">
+    <title>Wake up to WonderWidgets!</title>
+  </slide>
+
+  <!-- OVERVIEW -->
+  <slide type="all">
+    <title>Overview</title>
+    <item>Why <em>WonderWidgets</em> are great</item>
+    <item/>
+    <item>Who <em>buys</em> WonderWidgets</item>
+  </slide>
+
+</slideshow>
+<!-- GET http://httpbin.org/xml -->
+<!-- HTTP/1.1 200 OK -->
+<!-- Access-Control-Allow-Credentials: true -->
+<!-- Access-Control-Allow-Origin: * -->
+<!-- Content-Type: application/xml -->
+<!-- Date: Wed, 24 Apr 2019 18:44:20 GMT -->
+<!-- Referrer-Policy: no-referrer-when-downgrade -->
+<!-- Server: nginx -->
+<!-- X-Content-Type-Options: nosniff -->
+<!-- X-Frame-Options: DENY -->
+<!-- X-XSS-Protection: 1; mode=block -->
+<!-- Content-Length: 522 -->
+<!-- Connection: keep-alive -->
+<!-- Request duration: 0.284203s -->
+#+END_SRC
+
+* Test for unicode
+
+#+BEGIN_SRC restclient
+PUT http://httpbin.org/put
+Content-Type: application/json
+
+{
+    "text": "\u2018a"
+}
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC js
+{
+  "args": {
+  },
+  "data": "{\n    \"text\": \"\‘a\"\n}",
+  "files": {
+  },
+  "form": {
+  },
+  "headers": {
+    "Accept": "*/*",
+    "Accept-Charset": "utf-8;q=1, koi8-r;q=0.5, gb2312;q=0.5, big5;q=0.5, iso-2022-jp;q=0.5, shift_jis;q=0.5, euc-tw;q=0.5, euc-jp;q=0.5, euc-jis-2004;q=0.5, euc-kr;q=0.5, iso-8859-1;q=0.5, us-ascii;q=0.5, utf-7;q=0.5, hz-gb-2312;q=0.5, big5-hkscs;q=0.5, gbk;q=0.5, gb18030;q=0.5, iso-8859-5;q=0.5, koi8-u;q=0.5, cp866;q=0.5, koi8-t;q=0.5, windows-1251;q=0.5, cp855;q=0.5, iso-8859-2;q=0.5, iso-8859-3;q=0.5, iso-8859-4;q=0.5, iso-8859-9;q=0.5, iso-8859-10;q=0.5, iso-8859-13;q=0.5, iso-8859-14;q=0.5, iso-8859-15;q=0.5, windows-1250;q=0.5, windows-1252;q=0.5, windows-1254;q=0.5, windows-1257;q=0.5, cp775;q=0.5, cp850;q=0.5, cp852;q=0.5, cp857;q=0.5, cp858;q=0.5, cp860;q=0.5, cp861;q=0.5, cp863;q=0.5, cp865;q=0.5, cp437;q=0.5, macintosh;q=0.5, next;q=0.5, hp-roman8;q=0.5, adobe-standard-encoding;q=0.5, iso-8859-16;q=0.5, iso-8859-7;q=0.5, windows-1253;q=0.5, cp737;q=0.5, cp851;q=0.5, cp869;q=0.5, iso-8859-8;q=0.5, windows-1255;q=0.5, cp862;q=0.5, iso-2022-jp-2004;q=0.5, cp874;q=0.5, iso-8859-11;q=0.5, viscii;q=0.5, windows-1258;q=0.5, iso-8859-6;q=0.5, windows-1256;q=0.5, iso-2022-cn;q=0.5, iso-2022-cn-ext;q=0.5, iso-2022-jp-2;q=0.5, iso-2022-kr;q=0.5, utf-16le;q=0.5, utf-16be;q=0.5, utf-16;q=0.5, x-ctext;q=0.5",
+    "Content-Length": "25",
+    "Content-Type": "application/json",
+    "Extension": "Security/Digest Security/SSL",
+    "Host": "httpbin.org",
+    "Mime-Version": "1.0"
+  },
+  "json": {
+    "text": "‘a"
+  },
+  "origin": "197.231.221.211, 197.231.221.211",
+  "url": "https://httpbin.org/put"
+}
+// PUT http://httpbin.org/put
+// HTTP/1.1 200 OK
+// Access-Control-Allow-Credentials: true
+// Access-Control-Allow-Origin: *
+// Content-Type: application/json
+// Date: Wed, 24 Apr 2019 18:44:24 GMT
+// Referrer-Policy: no-referrer-when-downgrade
+// Server: nginx
+// X-Content-Type-Options: nosniff
+// X-Frame-Options: DENY
+// X-XSS-Protection: 1; mode=block
+// Content-Length: 1666
+// Connection: keep-alive
+// Request duration: 0.265720s
+#+END_SRC
+
+* Localhost bug test
+
+#+BEGIN_SRC restclient
+GET http://localhost:3000
+#+END_SRC
+
+* Magic mode matching test
+
+#+BEGIN_SRC restclient
+GET http://httpbin.org/response-headers?Content-Type=whatever/braindamage
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC js
+{
+  "Content-Length": "108",
+  "Content-Type": [
+    "application/json",
+    "whatever/braindamage"
+  ]
+}
+// GET http://httpbin.org/response-headers?Content-Type=whatever/braindamage
+// HTTP/1.1 200 OK
+// Access-Control-Allow-Credentials: true
+// Access-Control-Allow-Origin: *
+// Content-Type: whatever/braindamage
+// Date: Wed, 24 Apr 2019 18:44:33 GMT
+// Referrer-Policy: no-referrer-when-downgrade
+// Server: nginx
+// X-Content-Type-Options: nosniff
+// X-Frame-Options: DENY
+// X-XSS-Protection: 1; mode=block
+// Content-Length: 108
+// Connection: keep-alive
+// Request duration: 0.326196s
+#+END_SRC
+
+* UTF-8 encoding test
+
+#+BEGIN_SRC restclient
+PUT http://httpbin.org/put
+Content-Type: application/json
+
+{
+    "text": "привет",
+    "text2": "João Sá",
+    "text3": "João"
+}
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC js
+{
+  "args": {
+  },
+  "data": "{\n    \"text\": \"привет\",\n    \"text2\": \"João Sá\",\n    \"text3\": \"João\"\n}",
+  "files": {
+  },
+  "form": {
+  },
+  "headers": {
+    "Accept": "*/*",
+    "Accept-Charset": "utf-8;q=1, koi8-r;q=0.5, gb2312;q=0.5, big5;q=0.5, iso-2022-jp;q=0.5, shift_jis;q=0.5, euc-tw;q=0.5, euc-jp;q=0.5, euc-jis-2004;q=0.5, euc-kr;q=0.5, iso-8859-1;q=0.5, us-ascii;q=0.5, utf-7;q=0.5, hz-gb-2312;q=0.5, big5-hkscs;q=0.5, gbk;q=0.5, gb18030;q=0.5, iso-8859-5;q=0.5, koi8-u;q=0.5, cp866;q=0.5, koi8-t;q=0.5, windows-1251;q=0.5, cp855;q=0.5, iso-8859-2;q=0.5, iso-8859-3;q=0.5, iso-8859-4;q=0.5, iso-8859-9;q=0.5, iso-8859-10;q=0.5, iso-8859-13;q=0.5, iso-8859-14;q=0.5, iso-8859-15;q=0.5, windows-1250;q=0.5, windows-1252;q=0.5, windows-1254;q=0.5, windows-1257;q=0.5, cp775;q=0.5, cp850;q=0.5, cp852;q=0.5, cp857;q=0.5, cp858;q=0.5, cp860;q=0.5, cp861;q=0.5, cp863;q=0.5, cp865;q=0.5, cp437;q=0.5, macintosh;q=0.5, next;q=0.5, hp-roman8;q=0.5, adobe-standard-encoding;q=0.5, iso-8859-16;q=0.5, iso-8859-7;q=0.5, windows-1253;q=0.5, cp737;q=0.5, cp851;q=0.5, cp869;q=0.5, iso-8859-8;q=0.5, windows-1255;q=0.5, cp862;q=0.5, iso-2022-jp-2004;q=0.5, cp874;q=0.5, iso-8859-11;q=0.5, viscii;q=0.5, windows-1258;q=0.5, iso-8859-6;q=0.5, windows-1256;q=0.5, iso-2022-cn;q=0.5, iso-2022-cn-ext;q=0.5, iso-2022-jp-2;q=0.5, iso-2022-kr;q=0.5, utf-16le;q=0.5, utf-16be;q=0.5, utf-16;q=0.5, x-ctext;q=0.5",
+    "Content-Length": "78",
+    "Content-Type": "application/json",
+    "Extension": "Security/Digest Security/SSL",
+    "Host": "httpbin.org",
+    "Mime-Version": "1.0"
+  },
+  "json": {
+    "text": "привет",
+    "text2": "João Sá",
+    "text3": "João"
+  },
+  "origin": "197.231.221.211, 197.231.221.211",
+  "url": "https://httpbin.org/put"
+}
+// PUT http://httpbin.org/put
+// HTTP/1.1 200 OK
+// Access-Control-Allow-Credentials: true
+// Access-Control-Allow-Origin: *
+// Content-Type: application/json
+// Date: Wed, 24 Apr 2019 18:44:38 GMT
+// Referrer-Policy: no-referrer-when-downgrade
+// Server: nginx
+// X-Content-Type-Options: nosniff
+// X-Frame-Options: DENY
+// X-XSS-Protection: 1; mode=block
+// Content-Length: 1855
+// Connection: keep-alive
+// Request duration: 0.270964s
+#+END_SRC
+
+* POST
+ 
+#+BEGIN_SRC restclient
+POST http://httpbin.org/post
+
+pwd=1234
+#+END_SRC
+
+#+RESULTS:
+#+BEGIN_SRC js
+{
+  "args": {
+  },
+  "data": "pwd=1234",
+  "files": {
+  },
+  "form": {
+  },
+  "headers": {
+    "Accept": "*/*",
+    "Accept-Charset": "utf-8;q=1, koi8-r;q=0.5, gb2312;q=0.5, big5;q=0.5, iso-2022-jp;q=0.5, shift_jis;q=0.5, euc-tw;q=0.5, euc-jp;q=0.5, euc-jis-2004;q=0.5, euc-kr;q=0.5, iso-8859-1;q=0.5, us-ascii;q=0.5, utf-7;q=0.5, hz-gb-2312;q=0.5, big5-hkscs;q=0.5, gbk;q=0.5, gb18030;q=0.5, iso-8859-5;q=0.5, koi8-u;q=0.5, cp866;q=0.5, koi8-t;q=0.5, windows-1251;q=0.5, cp855;q=0.5, iso-8859-2;q=0.5, iso-8859-3;q=0.5, iso-8859-4;q=0.5, iso-8859-9;q=0.5, iso-8859-10;q=0.5, iso-8859-13;q=0.5, iso-8859-14;q=0.5, iso-8859-15;q=0.5, windows-1250;q=0.5, windows-1252;q=0.5, windows-1254;q=0.5, windows-1257;q=0.5, cp775;q=0.5, cp850;q=0.5, cp852;q=0.5, cp857;q=0.5, cp858;q=0.5, cp860;q=0.5, cp861;q=0.5, cp863;q=0.5, cp865;q=0.5, cp437;q=0.5, macintosh;q=0.5, next;q=0.5, hp-roman8;q=0.5, adobe-standard-encoding;q=0.5, iso-8859-16;q=0.5, iso-8859-7;q=0.5, windows-1253;q=0.5, cp737;q=0.5, cp851;q=0.5, cp869;q=0.5, iso-8859-8;q=0.5, windows-1255;q=0.5, cp862;q=0.5, iso-2022-jp-2004;q=0.5, cp874;q=0.5, iso-8859-11;q=0.5, viscii;q=0.5, windows-1258;q=0.5, iso-8859-6;q=0.5, windows-1256;q=0.5, iso-2022-cn;q=0.5, iso-2022-cn-ext;q=0.5, iso-2022-jp-2;q=0.5, iso-2022-kr;q=0.5, utf-16le;q=0.5, utf-16be;q=0.5, utf-16;q=0.5, x-ctext;q=0.5",
+    "Content-Length": "8",
+    "Extension": "Security/Digest Security/SSL",
+    "Host": "httpbin.org",
+    "Mime-Version": "1.0"
+  },
+  "json": null,
+  "origin": "197.231.221.211, 197.231.221.211",
+  "url": "https://httpbin.org/post"
+}
+// POST http://httpbin.org/post
+// HTTP/1.1 200 OK
+// Access-Control-Allow-Credentials: true
+// Access-Control-Allow-Origin: *
+// Content-Type: application/json
+// Date: Wed, 24 Apr 2019 18:44:42 GMT
+// Referrer-Policy: no-referrer-when-downgrade
+// Server: nginx
+// X-Content-Type-Options: nosniff
+// X-Frame-Options: DENY
+// X-XSS-Protection: 1; mode=block
+// Content-Length: 1578
+// Connection: keep-alive
+// Request duration: 0.312169s
+#+END_SRC
+
