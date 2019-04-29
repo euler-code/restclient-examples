@@ -1,6 +1,7 @@
 #+TITLE: Restclient examples
 #+AUTHOR: Leo Euler <euler@gmx.us>
 #+DATE: 2019-04-23
+#+PROPERTY: header-args :exports both
 #+OPTIONS: toc:2
 
 * Returns Origin IP
