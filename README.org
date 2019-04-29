@@ -3,6 +3,10 @@
 #+DATE: 2019-04-23
 #+OPTIONS: toc:2
 
+This repo provides some examples of using [[https://github.com/alf/ob-restclient.el][ob-restclient]].
+
+See [[https://github.com/pashky/restclient.el][restclient.el]] for more details.
+
 * Table of contents                                                     :TOC:
 - [[#returns-origin-ip][Returns Origin IP]]
 - [[#returns-user-agent][Returns user-agent]]
