@@ -3,6 +3,30 @@
 #+DATE: 2019-04-23
 #+OPTIONS: toc:2
 
+* Table of contents                                                     :TOC:
+- [[#returns-origin-ip][Returns Origin IP]]
+- [[#returns-user-agent][Returns user-agent]]
+- [[#returns-header-dict][Returns header dict]]
+- [[#returns-get-data][Returns GET data]]
+- [[#returns-post-data][Returns POST data]]
+- [[#content-type-is-loosely-matched-could-be-applicationvndwhateverjson][Content type is loosely matched, could be application/vnd.whatever+json]]
+- [[#content-type-is-loosely-matched-could-be-applicationvndwhateverjson][Content type is loosely matched, could be application/vnd.whatever+json]]
+- [[#returns-put-data][Returns PUT data]]
+- [[#returns-patch-data][Returns PATCH data]]
+- [[#returns-delete-data][Returns DELETE data]]
+- [[#http-status-codes][HTTP Status codes]]
+  - [[#404][404]]
+  - [[#200][200]]
+- [[#returns-given-response-headers][Returns given response headers]]
+- [[#cookie-data][cookie data]]
+- [[#httpbasic-auth][HTTPBasic Auth]]
+- [[#returns-some-xml][Returns some XML]]
+- [[#test-for-unicode][Test for unicode]]
+- [[#localhost-bug-test][Localhost bug test]]
+- [[#magic-mode-matching-test][Magic mode matching test]]
+- [[#utf-8-encoding-test][UTF-8 encoding test]]
+- [[#post][POST]]
+
 * Returns Origin IP
 
 #+BEGIN_SRC restclient :exports both
