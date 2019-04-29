@@ -1,7 +1,6 @@
 #+TITLE: Restclient examples
 #+AUTHOR: Leo Euler <euler@gmx.us>
 #+DATE: 2019-04-23
-#+PROPERTY: header-args :exports both
 #+OPTIONS: toc:2
 
 * Returns Origin IP
@@ -33,7 +32,7 @@ GET http://httpbin.org/ip
 
 * Returns user-agent
 
-#+BEGIN_SRC restclient
+#+BEGIN_SRC restclient :exports both
 GET http://httpbin.org/user-agent
 User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:31.0) Gecko/20100101 Firefox/31.0
 #+END_SRC
@@ -61,7 +60,7 @@ User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:31.0) Gecko/20100101 Fire
 
 * Returns header dict
 
-#+BEGIN_SRC restclient
+#+BEGIN_SRC restclient :exports both
 GET http://httpbin.org/headers
 #+END_SRC
 
@@ -94,7 +93,7 @@ GET http://httpbin.org/headers
 
 * Returns GET data
 
-#+BEGIN_SRC restclient
+#+BEGIN_SRC restclient :exports both
 GET http://httpbin.org/get?some=example&params=for&testing=restclient
 #+END_SRC
 
@@ -134,7 +133,7 @@ GET http://httpbin.org/get?some=example&params=for&testing=restclient
 
 * Returns POST data
 
-#+BEGIN_SRC restclient
+#+BEGIN_SRC restclient :exports both
 POST http://httpbin.org/post
 Content-Type: application/json
 
@@ -200,7 +199,7 @@ Content-Type: application/json
 
 * Content type is loosely matched, could be application/vnd.whatever+json
 
-#+BEGIN_SRC restclient
+#+BEGIN_SRC restclient :exports both
 GET http://httpbin.org/response-headers?Content-Type=application/vnd.whatever%2Bjson;%20charset=UTF-8
 #+END_SRC
 
@@ -231,7 +230,7 @@ GET http://httpbin.org/response-headers?Content-Type=application/vnd.whatever%2B
 
 * Content type is loosely matched, could be application/vnd.whatever+json
 
-#+BEGIN_SRC restclient
+#+BEGIN_SRC restclient :exports both
 GET http://httpbin.org/response-headers?Content-Type=application/something%2Bjson
 #+END_SRC
 
@@ -262,7 +261,7 @@ GET http://httpbin.org/response-headers?Content-Type=application/something%2Bjso
 
 * Returns PUT data
 
-#+BEGIN_SRC restclient
+#+BEGIN_SRC restclient :exports both
 PUT http://httpbin.org/put
 Content-Type: application/json
 
@@ -316,7 +315,7 @@ Content-Type: application/json
 
 * Returns PATCH data
 
-#+BEGIN_SRC restclient
+#+BEGIN_SRC restclient :exports both
 PATCH http://httpbin.org/patch
 Content-Type: application/xml
 
@@ -374,7 +373,7 @@ Content-Type: application/xml
 
 * Returns DELETE data
 
-#+BEGIN_SRC restclient
+#+BEGIN_SRC restclient :exports both
 DELETE http://httpbin.org/delete
 If-Match: "*"
 #+END_SRC
@@ -420,7 +419,7 @@ If-Match: "*"
 * HTTP Status codes
 ** 404
 
-#+BEGIN_SRC restclient
+#+BEGIN_SRC restclient :exports both
 GET http://httpbin.org/status/404
 #+END_SRC
 
@@ -444,7 +443,7 @@ GET http://httpbin.org/status/404
 
 ** 200
 
-#+BEGIN_SRC restclient
+#+BEGIN_SRC restclient :exports both
 GET http://httpbin.org/status/200
 #+END_SRC
 
@@ -468,7 +467,7 @@ GET http://httpbin.org/status/200
 
 * Returns given response headers
 
-#+BEGIN_SRC restclient
+#+BEGIN_SRC restclient :exports both
 GET http://httpbin.org/response-headers?key=val
 #+END_SRC
 
@@ -498,7 +497,7 @@ GET http://httpbin.org/response-headers?key=val
 
 * cookie data
 
-#+BEGIN_SRC restclient
+#+BEGIN_SRC restclient :exports both
 GET http://httpbin.org/cookies
 Cookie: name=restclient
 #+END_SRC
@@ -528,7 +527,7 @@ Cookie: name=restclient
 
 * HTTPBasic Auth
 
-#+BEGIN_SRC restclient
+#+BEGIN_SRC restclient :exports both
 :example-auth := (format "Basic %s" (base64-encode-string (format "%s:%s" "user" "password")))
 GET http://httpbin.org/basic-auth/user/password
 Authorization: :example-auth
@@ -558,7 +557,7 @@ Authorization: :example-auth
 
 * Returns some XML
 
-#+BEGIN_SRC restclient
+#+BEGIN_SRC restclient :exports both
 GET http://httpbin.org/xml
 #+END_SRC
 
@@ -606,7 +605,7 @@ GET http://httpbin.org/xml
 
 * Test for unicode
 
-#+BEGIN_SRC restclient
+#+BEGIN_SRC restclient :exports both
 PUT http://httpbin.org/put
 Content-Type: application/json
 
@@ -658,13 +657,13 @@ Content-Type: application/json
 
 * Localhost bug test
 
-#+BEGIN_SRC restclient
+#+BEGIN_SRC restclient :exports both
 GET http://localhost:3000
 #+END_SRC
 
 * Magic mode matching test
 
-#+BEGIN_SRC restclient
+#+BEGIN_SRC restclient :exports both
 GET http://httpbin.org/response-headers?Content-Type=whatever/braindamage
 #+END_SRC
 
@@ -695,7 +694,7 @@ GET http://httpbin.org/response-headers?Content-Type=whatever/braindamage
 
 * UTF-8 encoding test
 
-#+BEGIN_SRC restclient
+#+BEGIN_SRC restclient :exports both
 PUT http://httpbin.org/put
 Content-Type: application/json
 
@@ -751,7 +750,7 @@ Content-Type: application/json
 
 * POST
  
-#+BEGIN_SRC restclient
+#+BEGIN_SRC restclient :exports both
 POST http://httpbin.org/post
 
 pwd=1234
