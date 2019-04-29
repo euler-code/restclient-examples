@@ -6,7 +6,7 @@
 
 * Returns Origin IP
 
-#+BEGIN_SRC restclient
+#+BEGIN_SRC restclient :exports both
 GET http://httpbin.org/ip
 #+END_SRC
 
